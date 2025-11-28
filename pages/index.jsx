@@ -14,6 +14,8 @@ const Index = () => {
         <title>Mississippi Gulf Coast Real Estate | Cindy Creel</title>
         <meta name="description" content="Work with Cindy Creel, REALTOR® at J. Carter & Co. | Century 21 — Mississippi Gulf Coast homes and coastal properties." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/jpeg" href="/cindy creel headshot.jpg" />
+        <link rel="apple-touch-icon" href="/cindy creel headshot.jpg" />
       </Head>
       <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 antialiased">
         <header className="border-b border-slate-200 bg-white/80 backdrop-blur">
@@ -82,7 +84,7 @@ const Index = () => {
                   href="#about"
                   className="inline-flex items-center justify-center rounded-full border border-white/60 px-4 py-2 md:px-5 md:py-2.5 text-sm font-medium text-white hover:bg-white/10 transition"
                 >
-                  Learn About the Coast
+                  Learn About Cindy
                 </a>
               </div>
 
@@ -333,13 +335,13 @@ const Index = () => {
                 <p className="text-sm md:text-base text-slate-600">Explore active MLS listings across Biloxi, Gulfport, Ocean Springs and nearby communities.</p>
               </div>
 
-              <div className="rounded-2xl bg-slate-50 border border-slate-100 p-5 mb-7">
-                <div id="idx-search" className="w-full">
+              <div className="-mx-4 md:mx-0 md:rounded-2xl bg-slate-50 md:border md:border-slate-100 md:p-5 mb-7">
+                <div id="idx-search" className="w-full overflow-x-hidden">
                   <iframe
                     src="//link.flexmls.com/1tt8q4qvg641,6"
                     frameBorder="0"
-                    width="100%"
-                    height="850"
+                    className="block w-screen md:w-full h-[720px] md:h-[850px]"
+                    loading="lazy"
                   />
                 </div>
               </div>
