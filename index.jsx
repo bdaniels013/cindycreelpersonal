@@ -73,13 +73,13 @@ const Index = () => {
             <div className="flex flex-wrap gap-3 mb-6">
               <a
                 href="#lead-form"
-                className="inline-flex items-center justify-center rounded-full bg-amber-300 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-md hover:bg-amber-200 transition"
+                className="inline-flex items-center justify-center rounded-full bg-amber-300 px-4 py-2 md:px-5 md:py-2.5 text-sm font-semibold text-slate-900 shadow-md hover:bg-amber-200 transition"
               >
                 Get Your Free Home Report
               </a>
               <a
                 href="#about"
-                className="inline-flex items-center justify-center rounded-full border border-white/60 px-5 py-2.5 text-sm font-medium text-white hover:bg-white/10 transition"
+                className="inline-flex items-center justify-center rounded-full border border-white/60 px-4 py-2 md:px-5 md:py-2.5 text-sm font-medium text-white hover:bg-white/10 transition"
               >
                 Learn About the Coast
               </a>
@@ -89,17 +89,17 @@ const Index = () => {
               <img
                 src="/gulfcoast susnset.jpg"
                 alt="Mississippi Gulf Coast sunset"
-                className="h-12 w-20 rounded-lg object-cover border border-white/20"
+                className="h-12 w-16 md:w-20 rounded-lg object-cover border border-white/20"
               />
               <img
                 src="/gulfcoast sunrise.jpg"
                 alt="Mississippi Gulf Coast sunrise"
-                className="h-12 w-20 rounded-lg object-cover border border-white/20"
+                className="h-12 w-16 md:w-20 rounded-lg object-cover border border-white/20"
               />
               <img
                 src="/os bridge smooth water.png"
                 alt="Ocean Springs bridge over smooth water"
-                className="h-12 w-20 rounded-lg object-cover border border-white/20"
+                className="h-12 w-16 md:w-20 rounded-lg object-cover border border-white/20"
               />
             </div>
 
@@ -250,7 +250,7 @@ const Index = () => {
                 &ldquo;I love helping people see what&apos;s possible on the Coast — the homes, the lifestyle,
                 and the community. You don&apos;t just need a house; you need the right fit for your life.&rdquo;
               </p>
-              <div className="grid grid-cols-2 gap-3 text-xs">
+              <div className="grid md:grid-cols-2 gap-3 text-xs">
                 <div className="rounded-xl bg-slate-50 border border-slate-100 p-3">
                   <p className="font-semibold text-slate-800 mb-1">Buyers</p>
                   <p className="text-[11px] text-slate-600">
@@ -338,34 +338,17 @@ const Index = () => {
             </div>
 
             <div className="rounded-2xl bg-slate-50 border border-slate-100 p-5 mb-7">
-              <div id="idx-search" className="w-full h-20 flex items-center justify-center text-slate-500 text-sm">
-                MLS search widget
+              <div id="idx-search" className="w-full">
+                <iframe
+                  src="//link.flexmls.com/1tt8q4qvg641,6"
+                  frameBorder="0"
+                  width="100%"
+                  height="850"
+                />
               </div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 md:gap-7">
-              <div className="rounded-2xl bg-white border border-slate-100 overflow-hidden shadow-sm">
-                <img src="/logo.jpeg" alt="Listing placeholder image" className="h-40 w-full object-cover" />
-                <div className="p-4">
-                  <p className="text-sm font-semibold text-slate-900">3 Bed • 2 Bath • Gulfport</p>
-                  <p className="text-xs text-slate-600">Listing courtesy of Example Brokerage</p>
-                </div>
-              </div>
-              <div className="rounded-2xl bg-white border border-slate-100 overflow-hidden shadow-sm">
-                <img src="/logo.jpeg" alt="Listing placeholder image" className="h-40 w-full object-cover" />
-                <div className="p-4">
-                  <p className="text-sm font-semibold text-slate-900">4 Bed • 3 Bath • Biloxi</p>
-                  <p className="text-xs text-slate-600">Listing courtesy of Example Brokerage</p>
-                </div>
-              </div>
-              <div className="rounded-2xl bg-white border border-slate-100 overflow-hidden shadow-sm">
-                <img src="/logo.jpeg" alt="Listing placeholder image" className="h-40 w-full object-cover" />
-                <div className="p-4">
-                  <p className="text-sm font-semibold text-slate-900">2 Bed • 2 Bath • Ocean Springs</p>
-                  <p className="text-xs text-slate-600">Listing courtesy of Example Brokerage</p>
-                </div>
-              </div>
-            </div>
+            
 
             <div className="mt-6 text-[10px] text-slate-600">
               <p>
@@ -593,7 +576,6 @@ const Index = () => {
                   </p>
                   <p>Licensed in Mississippi</p>
                   <div className="inline-flex items-center justify-end gap-2">
-                    <img src="/images/eho.png" alt="Equal Housing Opportunity logo" className="h-4 w-auto" />
                     <p>Equal Housing Opportunity.</p>
                   </div>
                 </div>
