@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 
 const Index = () => {
-  const handleSubmit = (e) => {
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted");
+    if (submitting) return;
+    setSubmitting(true);
+    setSubmitError("");
+    const fd = new FormData(e.currentTarget);
+    const data = Object.fromEntries(fd.entries());
+    try {
+      const r = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!r.ok) throw new Error("bad");
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError("Please check your details and try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
   const updatedAt = new Date().toLocaleString("en-US", { timeZone: "America/Chicago" });
 
@@ -64,7 +84,7 @@ const Index = () => {
                 Mississippi Gulf Coast Real Estate
               </p>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mb-4">
-                Live the Gulf Coast Lifestyle
+                Find your next Mississippi Gulf Coast home
                 <br />
                 <span className="text-amber-300">with a Local Expert by Your Side.</span>
               </h1>
@@ -356,6 +376,58 @@ const Index = () => {
             </div>
           </section>
         </main>
+
+        <section id="lead-form" className="py-16 md:py-18 bg-slate-900 text-white">
+          <div className="mx-auto max-w-6xl px-4 grid md:grid-cols-[1.1fr,0.9fr] gap-10 items-start">
+            <div>
+              <p className="text-xs font-semibold tracking-[0.25em] uppercase text-amber-300 mb-3">Free Custom Gulf Coast Home Report</p>
+              <h2 className="text-2xl md:text-3xl font-semibold mb-3">Get a Personalized Snapshot of Your Next Move.</h2>
+              <p className="text-sm md:text-base text-slate-100/90 mb-4">Share your contact details and Cindy will follow up with next steps for your Mississippi Gulf Coast real estate goals.</p>
+              <ul className="space-y-2 text-sm text-slate-100/90 mb-5">
+                <li className="flex gap-2"><span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-amber-300" /><span>Recent local activity and pricing trends.</span></li>
+                <li className="flex gap-2"><span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-amber-300" /><span>Estimated timelines and expectations.</span></li>
+                <li className="flex gap-2"><span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-amber-300" /><span>No obligation — just helpful information.</span></li>
+              </ul>
+              <p className="text-[11px] text-slate-200/80">By submitting, you agree to be contacted by phone, text, or email regarding your request.</p>
+            </div>
+
+            <div className="bg-white text-slate-900 rounded-2xl shadow-xl p-6 md:p-7 border border-slate-100">
+              {!submitted ? (
+                <form className="space-y-4" onSubmit={handleSubmit}>
+                  <input type="text" name="website" className="hidden" />
+                  <div>
+                    <label className="block text-xs font-medium text-slate-700 mb-1">Name <span className="text-rose-500">*</span></label>
+                    <div className="grid md:grid-cols-2 gap-3">
+                      <input type="text" name="firstName" placeholder="First" required className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white focus:ring-1 focus:ring-amber-400" />
+                      <input type="text" name="lastName" placeholder="Last" required className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white focus:ring-1 focus:ring-amber-400" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-slate-700 mb-1">Email <span className="text-rose-500">*</span></label>
+                    <input type="email" name="email" required className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white focus:ring-1 focus:ring-amber-400" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-slate-700 mb-1">Phone <span className="text-rose-500">*</span></label>
+                    <input type="tel" name="phone" required className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none focus:border-amber-400 focus:bg-white focus:ring-1 focus:ring-amber-400" />
+                  </div>
+                  {submitError && <p className="text-[11px] text-rose-600">{submitError}</p>}
+                  <button type="submit" disabled={submitting} className="w-full rounded-full bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800 transition shadow-sm disabled:opacity-50">
+                    {submitting ? "Sending..." : "Request My Home Report"}
+                  </button>
+                  <div className="mt-2 flex items-center justify-center gap-4 text-[10px] text-slate-500">
+                    <span className="inline-flex items-center gap-1"><span className="h-1.5 w-1.5 rounded-full bg-amber-400" /> Secure &amp; Private</span>
+                    <span className="inline-flex items-center gap-1"><span className="h-1.5 w-1.5 rounded-full bg-amber-400" /> No Spam</span>
+                  </div>
+                </form>
+              ) : (
+                <div className="text-center">
+                  <p className="text-sm font-semibold mb-2">Thank you. Cindy will reach out shortly.</p>
+                  <p className="text-xs text-slate-600">You can also call or text Cindy at (228) 209-1655.</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
 
         <section id="privacy" className="border-t border-slate-200 bg-white">
           <div className="mx-auto max-w-6xl px-4 py-6 text-[11px] text-slate-600 space-y-2">
