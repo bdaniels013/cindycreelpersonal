@@ -299,11 +299,11 @@ const Index = () => {
                 </p>
               </div>
 
-              <div className="rounded-2xl overflow-hidden border border-slate-100 mb-8">
+              <div className="rounded-2xl overflow-hidden border border-slate-100 mb-8 bg-slate-50">
                 <img
                   src="/os bridge smooth water.png"
                   alt="Ocean Springs bridge over smooth water"
-                  className="w-full h-40 md:h-52 object-cover"
+                  className="w-full h-40 md:h-auto md:max-h-[420px] object-cover md:object-contain object-center"
                 />
               </div>
 
